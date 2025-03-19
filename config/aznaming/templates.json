@@ -1,0 +1,38 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jimmieulenius/aznaming-config/refs/heads/main/schemas/config/config.json",
+    "templates": {
+        "$ref": "#default.templates",
+        "default": {
+            "$ref": "#default.templates.default",
+            "properties": {
+                "$ref": "#.[default.templates.default].properties",
+                "template": "{RESOURCE_1}[{-}{RESOURCE_2}][{-}{RESOURCE_3}][{-}]{BUSINESS_UNIT}[{-}]{WORKLOAD}[{-}{PURPOSE}][{-}]{ENVIRONMENT}[{-}{INSTANCE}][{-}{SUBINSTANCE}]"
+            }
+        },
+        "compute/sshPublicKeys": {
+            "$id": "default.templates.compute/sshPublicKeys",
+            "properties": {
+                "$ref": "#.[default.templates.default].properties",
+                "name": "compute/sshPublicKeys",
+                "shortName": "key",
+                "lengthMax": 80,
+                "lengthMin": 1,
+                "validText": "Alphanumerics, underscores, periods, and hyphens. Start with alphanumeric. End alphanumeric or underscore.",
+                "invalidText": "",
+                "invalidCharacters": "",
+                "invalidCharactersStart": "",
+                "invalidCharactersEnd": "",
+                "invalidCharactersConsecutive": "",
+                "regex": "^(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9_\\.-]{0,78}[a-zA-Z0-9_])$",
+                "staticValue": ""
+            }
+        },
+        "Network/virtualnetworks/subnets": {
+            "$ref": "#default.templates.Network/virtualnetworks/subnets",
+            "properties": {
+                "$ref": "#.[default.templates.Network/virtualnetworks/subnets].properties",
+                "template": "{RESOURCE_1}[{-}{RESOURCE_2}][{-}]{WORKLOAD}[{-}{PURPOSE}][{-}]{ENVIRONMENT}[{-}{INSTANCE}][{-}{SUBINSTANCE}]"
+            }
+        }
+    }
+}

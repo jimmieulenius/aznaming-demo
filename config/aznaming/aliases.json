@@ -1,0 +1,8 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jimmieulenius/aznaming-config/refs/heads/main/schemas/config/config.json",
+    "aliases": {
+        "components": {
+            "RESOURCE_1": "RESOURCE_TYPE"
+        }
+    }
+}

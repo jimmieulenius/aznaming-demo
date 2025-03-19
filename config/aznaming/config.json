@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jimmieulenius/aznaming-config/refs/heads/main/schemas/config/sections.json",
+    "sections": [
+        {
+            "uri": "./aliases.json"
+        },
+        {
+            "uri": "./templates.json"
+        },
+        {
+            "uri": "./components.json"
+        }
+    ]
+}

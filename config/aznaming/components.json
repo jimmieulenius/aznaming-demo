@@ -1,0 +1,71 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jimmieulenius/aznaming-config/refs/heads/main/schemas/config/config.json",
+    "components": {
+        "BUSINESS_UNIT": {
+            "type": "dictionary",
+            "properties": {
+                "source": {
+                    "myBusinessUnit": "mbu",
+                    "anotherBusinessUnit": "abu"
+                }
+            }
+        },
+        "PROJECT": {
+            "type": "dictionary",
+            "properties": {
+                "source": {
+                    "myProject": "mp",
+                    "myOtherProject": "mop"
+                }
+            }
+        },
+        "PURPOSE": {
+            "type": "freeText",
+            "properties": {}
+        },
+        "ENVIRONMENT": {
+            "type": "dictionary",
+            "properties": {
+                "source": {
+                    "dev": "dev",
+                    "stage": "stage",
+                    "prod": "prod"
+                }
+            }
+        },
+        "RESOURCE_TYPE": {
+            "$ref": "#default.components.RESOURCE_TYPE",
+            "properties": {
+                "$ref": "#.['default.components.RESOURCE_TYPE'].properties",
+                "source": {
+                    "$ref": "#.['default.components.RESOURCE_TYPE'].properties.source",
+                    "compute/sshPublicKeys": "key",
+                    "key": "key"
+                }
+            }
+        },
+        "RESOURCE_1": {
+            "$ref": "$.components.RESOURCE_TYPE"
+        },
+        "RESOURCE_2": {
+            "$ref": "$.components.RESOURCE_TYPE"
+        },
+        "RESOURCE_3": {
+            "$ref": "$.components.RESOURCE_TYPE"
+        },
+        "INSTANCE": {
+            "$ref": "#default.components.INSTANCE",
+            "properties": {
+                "$ref": "#.['default.components.INSTANCE'].properties",
+                "maxValue": 99,
+                "padding": {
+                    "$ref": "#.['default.components.INSTANCE'].properties.padding",
+                    "totalLength": 2
+                }
+            }
+        },
+        "SUBINSTANCE": {
+            "$ref": "$.components.INSTANCE"
+        }
+    }
+}
