@@ -5,11 +5,16 @@ param (
     [String]
     $Project = "myproject",
 
+    [Parameter(Mandatory = $true)]
     [String]
-    $Environment = "dev",
+    $Environment,
 
+    [String]
+    $Location = "westeurope",
+
+    [Parameter(Mandatory = $true)]
     [Int]
-    $Instance = 0
+    $Instance
 )
 
 $toolsPath = "$PSScriptRoot/../tools"
@@ -25,7 +30,9 @@ $azNamingPath = "$toolsPath/aznamingcli$extension"
 $values = @(
     "business_unit=$BusinessUnit",
     "project=$Project",
-    "environment=$Environment"
+    "environment=$Environment",
+
+    "location=$Location"
 )
 
 if ($Instance -gt 0) {
@@ -33,6 +40,13 @@ if ($Instance -gt 0) {
 }
 
 $configPath = "$PSScriptRoot/../config/aznaming/config.json"
+
+$resourceGroupName = & $azNamingPath name `
+    --template 'Resources/resourcegroups' `
+    --values $values
+
+$resourceGroupName `
+    | Out-Default
 
 $resourceGroupName = & $azNamingPath name `
     --template 'Resources/resourcegroups' `

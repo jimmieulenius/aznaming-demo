@@ -27,9 +27,9 @@
             "type": "dictionary",
             "properties": {
                 "source": {
-                    "dev": "dev",
-                    "stage": "stage",
-                    "prod": "prod"
+                    "dev": "d",
+                    "stg": "s",
+                    "prd": "p"
                 }
             }
         },

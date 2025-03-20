@@ -6,7 +6,7 @@
             "$ref": "#default.templates.default",
             "properties": {
                 "$ref": "#.[default.templates.default].properties",
-                "template": "{RESOURCE_1}[{-}{RESOURCE_2}][{-}{RESOURCE_3}][{-}]{BUSINESS_UNIT}[{-}]{WORKLOAD}[{-}{PURPOSE}][{-}]{ENVIRONMENT}[{-}{INSTANCE}][{-}{SUBINSTANCE}]"
+                "template": "{ENVIRONMENT}[{-}]{BUSINESS_UNIT}[{-}]{WORKLOAD}[{-}{INSTANCE}][{-}{PURPOSE}][{-}]{RESOURCE_1}[{-}{RESOURCE_2}][{-}{RESOURCE_3}]"
             }
         },
         "compute/sshPublicKeys": {
@@ -31,7 +31,7 @@
             "$ref": "#default.templates.Network/virtualnetworks/subnets",
             "properties": {
                 "$ref": "#.[default.templates.Network/virtualnetworks/subnets].properties",
-                "template": "{RESOURCE_1}[{-}{RESOURCE_2}][{-}]{WORKLOAD}[{-}{PURPOSE}][{-}]{ENVIRONMENT}[{-}{INSTANCE}][{-}{SUBINSTANCE}]"
+                "template": "{ENVIRONMENT}{WORKLOAD}[{-}{INSTANCE}][{-}{PURPOSE}][{-}]{RESOURCE_1}"
             }
         }
     }

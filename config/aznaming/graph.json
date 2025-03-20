@@ -52,7 +52,7 @@
         }
     },
     "bastion": {
-        "template": "{RESOURCE_1}[{-}{RESOURCE_2}]-NIP-INTEGRATIONS-{ENVIRONMENT}",
+        "template": "{RESOURCE_1}[{-}{RESOURCE_2}]-shared-{ENVIRONMENT}",
         "values": {
             "SEPARATOR": "-"
         },
