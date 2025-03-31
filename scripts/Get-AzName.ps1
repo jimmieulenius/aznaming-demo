@@ -25,6 +25,18 @@ elseif ($IsLinux) {
 
 $Env:PATH += "$([System.IO.Path]::PathSeparator)$toolsPath"
 
+$tfBaseWorkingDirectory = "$PSScriptRoot/../terraform/"
+$varsPathFormatString = "$tfBaseWorkingDirectory/main.vars{0}.json"
+$varsEnvironmentPath = $varsPathFormatString -f ".$($Environment.ToLower())"
+$varsEnvironmentObject = (
+    Get-Content `
+        -Path $varsEnvironmentPath `
+        -Raw
+) `
+| ConvertFrom-Json `
+    -AsHashtable
+$subscriptionId = $varsEnvironmentObject.subscription_id
+
 $values = @(
     "workload=$AppName",
     "environment=$Environment",
@@ -154,6 +166,17 @@ $resourceName `
 | Out-Default
 
 # Using custom abbreviation in config
+$resourceName = aznamingcli name `
+    --template 'managedIdentity/userAssignedIdentities' `
+    --values @(
+        "workload=$AppName",
+        "environment=$Environment",
+        "location=$Location"
+    )
+
+$resourceName `
+    | Out-Default
+
 $resourceName = aznamingcli name `
     --template 'managedIdentity/userAssignedIdentities' `
     --values $values `

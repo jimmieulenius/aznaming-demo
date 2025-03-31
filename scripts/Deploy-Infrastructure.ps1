@@ -1,9 +1,6 @@
 param (
     [String]
-    $BusinessUnit = $Env:BUSINESS_UNIT ?? "myBusinessUnit",
-
-    [String]
-    $Project = $Env:PROJECT ?? "myProject",
+    $AppNAme = "myProject",
 
     [Parameter(Mandatory = $true)]
     [ValidateSet(
@@ -17,7 +14,7 @@ param (
     [Parameter(Mandatory = $true)]
     [ValidateRange(0, 99)]
     [Int]
-    $Instance,
+    $Id,
 
     [Parameter(Mandatory = $true)]
     [String]
@@ -114,13 +111,12 @@ try {
     $Env:PATH += "$([System.IO.Path]::PathSeparator)$toolsPath"
 
     $values = @(
-        "business_unit=$BusinessUnit",
-        "project=$Project",
+        "app_name=$AppName",
         "environment=$Environment"
     )
 
-    if ($Instance -gt 0) {
-        $values += "instance=$Instance"
+    if ($Id -gt 0) {
+        $values += "id=$Id"
     }
 
     $varsPathFormatString = "$tfBaseWorkingDirectory/main.vars{0}.json"
