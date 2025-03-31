@@ -8,142 +8,19 @@
             "PURPOSE": "cicd"
         }
     },
-    "kubernetes_cluster": {
-        "template": "containerService/managedClusters"
-    },
     "key_vault": {
         "vault": {
             "template": "keyVault/vaults"
-        },
-        "network": {
-            "private_endpoint": {
-                "template": "network/privateEndpoints",
-                "values": {
-                    "RESOURCE_2": "keyVault/vaults"
-                }
-            },
-            "network_interface": {
-                "template": "network/privateEndpoints",
-                "values": {
-                    "RESOURCE_2": "keyVault/vaults",
-                    "RESOURCE_3": "Network/networkInterfaces"
-                }
-            }
         }
     },
     "container_registry": {
         "registry": {
             "template": "containerRegistry/registries"
-        },
-        "network": {
-            "private_endpoint": {
-                "template": "network/privateEndpoints",
-                "values": {
-                    "RESOURCE_2": "containerRegistry/registries"
-                }
-            },
-            "network_interface": {
-                "template": "network/privateEndpoints",
-                "values": {
-                    "RESOURCE_2": "containerRegistry/registries",
-                    "RESOURCE_3": "Network/networkInterfaces"
-                }
-            }
-        }
-    },
-    "bastion": {
-        "template": "{RESOURCE_1}[{-}{RESOURCE_2}]-shared-{ENVIRONMENT}",
-        "values": {
-            "SEPARATOR": "-"
-        },
-        "bastion_host": {
-            "values": {
-                "RESOURCE_1": "network/bastionHosts"
-            }
-        },
-        "public_ip": {
-            "values": {
-                "RESOURCE_1": "network/publicIPAddresses",
-                "RESOURCE_2": "network/bastionHosts"
-            }
-        }
-    },
-    "virtual_machine": {
-        "template": "compute/virtualMachines::linux",
-        "values": {
-            "PURPOSE": "mgmt"
-        },
-        "virtual_machine": {
-            "template": "compute/virtualMachines::linux"
-        },
-        "network_interface": {
-            "values": {
-                "RESOURCE_2": "network/networkInterfaces"
-            }
-        },
-        "network_security_group": {
-            "values": {
-                "RESOURCE_2": "network/networkSecurityGroups"
-            }
-        },
-        "data_disks": {
-            "values": {
-                "RESOURCE_2": "compute/disks::dataDisk"
-            },
-            "instances": [
-                {
-                    "values": {
-                        "SUBINSTANCE": 1
-                    }
-                },
-                {
-                    "values": {
-                        "SUBINSTANCE": 2
-                    }
-                }
-            ]
-        },
-        "os_disk": {
-            "values": {
-                "RESOURCE_2": "compute/disks::osDisk"
-            }
-        },
-        "ssh_public_key": {
-            "values": {
-                "RESOURCE_2": "compute/sshPublicKeys"
-            }
         }
     },
     "network": {
-        "template": "{RESOURCE_1}-shared-{ENVIRONMENT}",
-        "virtual_network": {
-            "values": {
-                "RESOURCE_1": "vnet"
-            }
-        },
-        "resource_group": {
-            "values": {
-                "RESOURCE_1": "resources/resourcegroups"
-            }
-        },
-        "network_security_group": {
-            "values": {
-                "RESOURCE_1": "Network/networkSecurityGroups"
-            }
-        },
-        "subnets": {
-            "aks": {
-                "template": "network/virtualNetworks/subnets",
-                "values": {
-                    "PURPOSE": "aks-tmp"
-                }
-            },
-            "mgmt": {
-                "template": "network/virtualNetworks/subnets",
-                "values": {
-                    "PURPOSE": "mgmt-tmp"
-                }
-            }
+        "subnet": {
+            "template": "Network/virtualnetworks/subnets"
         }
     }
 }

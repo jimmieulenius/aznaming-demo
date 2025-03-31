@@ -3,6 +3,9 @@
     "aliases": {
         "components": {
             "RESOURCE_1": "RESOURCE_TYPE"
+        },
+        "templates": {
+            "mi": "managedIdentity/userAssignedIdentities"
         }
     }
 }

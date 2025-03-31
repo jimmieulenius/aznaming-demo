@@ -1,16 +1,7 @@
 {
     "$schema": "https://raw.githubusercontent.com/jimmieulenius/aznaming-config/refs/heads/main/schemas/config/config.json",
     "components": {
-        "BUSINESS_UNIT": {
-            "type": "dictionary",
-            "properties": {
-                "source": {
-                    "myBusinessUnit": "mbu",
-                    "anotherBusinessUnit": "abu"
-                }
-            }
-        },
-        "PROJECT": {
+        "APP_NAME": {
             "type": "dictionary",
             "properties": {
                 "source": {
@@ -27,9 +18,9 @@
             "type": "dictionary",
             "properties": {
                 "source": {
-                    "dev": "d",
-                    "stg": "s",
-                    "prd": "p"
+                    "dev": "dev",
+                    "qas": "qas",
+                    "run": "run"
                 }
             }
         },
@@ -39,33 +30,20 @@
                 "$ref": "#.['default.components.RESOURCE_TYPE'].properties",
                 "source": {
                     "$ref": "#.['default.components.RESOURCE_TYPE'].properties.source",
-                    "compute/sshPublicKeys": "key",
-                    "key": "key"
+                    "managedIdentity/userAssignedIdentities": "mi"
                 }
             }
         },
-        "RESOURCE_1": {
-            "$ref": "$.components.RESOURCE_TYPE"
-        },
-        "RESOURCE_2": {
-            "$ref": "$.components.RESOURCE_TYPE"
-        },
-        "RESOURCE_3": {
-            "$ref": "$.components.RESOURCE_TYPE"
-        },
-        "INSTANCE": {
-            "$ref": "#default.components.INSTANCE",
+        "ID": {
+            "type": "instance",
             "properties": {
-                "$ref": "#.['default.components.INSTANCE'].properties",
+                "minValue": 1,
                 "maxValue": 99,
                 "padding": {
-                    "$ref": "#.['default.components.INSTANCE'].properties.padding",
-                    "totalLength": 2
+                    "totalLength": 2,
+                    "character": "0"
                 }
             }
-        },
-        "SUBINSTANCE": {
-            "$ref": "$.components.INSTANCE"
         }
     }
 }

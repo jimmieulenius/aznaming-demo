@@ -6,32 +6,14 @@
             "$ref": "#default.templates.default",
             "properties": {
                 "$ref": "#.[default.templates.default].properties",
-                "template": "{ENVIRONMENT}[{-}]{BUSINESS_UNIT}[{-}]{WORKLOAD}[{-}{INSTANCE}][{-}{PURPOSE}][{-}]{RESOURCE_1}[{-}{RESOURCE_2}][{-}{RESOURCE_3}]"
-            }
-        },
-        "compute/sshPublicKeys": {
-            "$id": "default.templates.compute/sshPublicKeys",
-            "properties": {
-                "$ref": "#.[default.templates.default].properties",
-                "name": "compute/sshPublicKeys",
-                "shortName": "key",
-                "lengthMax": 80,
-                "lengthMin": 1,
-                "validText": "Alphanumerics, underscores, periods, and hyphens. Start with alphanumeric. End alphanumeric or underscore.",
-                "invalidText": "",
-                "invalidCharacters": "",
-                "invalidCharactersStart": "",
-                "invalidCharactersEnd": "",
-                "invalidCharactersConsecutive": "",
-                "regex": "^(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9_\\.-]{0,78}[a-zA-Z0-9_])$",
-                "staticValue": ""
+                "template": "{RESOURCE_TYPE}[{-}]{APP_NAME}[{-}{PURPOSE}][{-}{ID}][{-}]{ENVIRONMENT}"
             }
         },
         "Network/virtualnetworks/subnets": {
             "$ref": "#default.templates.Network/virtualnetworks/subnets",
             "properties": {
                 "$ref": "#.[default.templates.Network/virtualnetworks/subnets].properties",
-                "template": "{ENVIRONMENT}{WORKLOAD}[{-}{INSTANCE}][{-}{PURPOSE}][{-}]{RESOURCE_1}"
+                "template": "{APP_NAME}[{-}{PURPOSE}][{-}{ID}]"
             }
         }
     }
